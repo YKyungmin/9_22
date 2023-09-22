@@ -7,7 +7,7 @@ rejected : 잡업의 요청이 거절된 상태
 
 작업시간이 오래걸리는 업무를 수행할때 프로미스로 반환하면
 해당 작업완료이후 동기적으로 다음 작업을 선형화 해서 수행 (es6)
-*/
+
 
 fetch('DB/department.json2')
 	.then((data) => {
@@ -22,5 +22,19 @@ fetch('DB/department.json2')
 	.catch((err) => {
 		//이전 메서드에서 반환된 프로미스가 rejected상태 일때 실행
 		//오류가 발생했을때 runtime에러가 발생하지 않도록 예외사항을 준비
+		console.log(err);
+	});
+*/
+
+fetch('DB/department.json2')
+	.then((data) => {
+		return data.json();
+	})
+
+	.then((json) => {
+		console.log(json);
+	})
+
+	.catch((err) => {
 		console.log(err);
 	});
